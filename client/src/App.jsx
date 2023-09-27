@@ -8,6 +8,7 @@ import AppRedirects from './AppRedirects';
 import Header from './Header';
 import Home from './Home';
 import Login from './Login';
+import Detail from './Detail';
 import AdminRoutes from './Admin/AdminRoutes';
 import InvitesRoutes from './Invites/InvitesRoutes';
 import PasswordsRoutes from './Passwords/PasswordsRoutes';
@@ -29,6 +30,8 @@ function App() {
                 <Route path="/" element={<Home />} />
                 <Route path="/login" element={<Login />} />
                 <Route path="/passwords/*" element={<PasswordsRoutes />} />
+                <Route path="/detail/*" element={<Detail />} />
+
                 <Route path="/invites/*" element={<InvitesRoutes />} />
                 {staticContext?.env?.VITE_FEATURE_REGISTRATION === 'true' && <Route path="/register" element={<Register />} />}
                 <Route path="/account/*" element={<UsersRoutes />} />
