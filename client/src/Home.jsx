@@ -11,10 +11,9 @@ function Home() {
       </Helmet>
       <main className="container">
         <h1 >Home</h1>
-        <div >hello</div>
-        <Item title="apple"></Item>
-        <Item title="banana"></Item>
-        <Item title="fruits"></Item>
+        <Item title="Item 1"></Item>
+        <Item title="Item 2"></Item>
+        <Item title="Item 3"></Item>
 
       </main>
     </>
