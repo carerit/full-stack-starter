@@ -30,7 +30,7 @@ function App() {
                 <Route path="/" element={<Home />} />
                 <Route path="/login" element={<Login />} />
                 <Route path="/passwords/*" element={<PasswordsRoutes />} />
-                <Route path="/detail/*" element={<Detail />} />
+                <Route path="/detail/:id" element={<Detail />} />
                 <Route path="/invites/*" element={<InvitesRoutes />} />
                 {staticContext?.env?.VITE_FEATURE_REGISTRATION === 'true' && <Route path="/register" element={<Register />} />}
                 <Route path="/account/*" element={<UsersRoutes />} />

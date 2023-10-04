@@ -1,9 +1,27 @@
 import { Helmet } from 'react-helmet-async';
 import { useStaticContext } from './StaticContext';
 import Item from './Item';
+import { useParams, useState, useEffect } from 'react';
 
 function Home() {
+
   const staticContext = useStaticContext();
+
+  const [data, setData] = useState();
+  useEffect(() => {
+    const token = 'patpzeJGcJ0aHfK6J.e9011b3d993570931a90fb1f5597cd7c07304a39fd3cbbd97b5eb2c2c5c4cbe5';
+    const url = 'https://api.airtable.com/v0/appvoUbpT81hh1l9f/Table%201?view=Grid%20view';
+
+    fetch(url, {
+      headers: { Authorization: `Bearer ${token}` }
+    })
+      .then((response) => response.json())
+      .then((data) => setData(data));
+  }
+    , []);
+
+    console.log(data);
+
   return (
     <>
       <Helmet>
@@ -11,10 +29,7 @@ function Home() {
       </Helmet>
       <main className="container">
         <h1 >Home</h1>
-        <Item title="Item 1"></Item>
-        <Item title="Item 2"></Item>
-        <Item title="Item 3"></Item>
-
+        {data?.records.map((record) => <Item key={record.id} record={record} />)}
       </main>
     </>
   );
