@@ -14,6 +14,7 @@ import InvitesRoutes from './Invites/InvitesRoutes';
 import PasswordsRoutes from './Passwords/PasswordsRoutes';
 import Register from './Register';
 import UsersRoutes from './Users/UsersRoutes';
+import Create from './Create'
 
 function App() {
   const staticContext = useStaticContext();
@@ -30,6 +31,7 @@ function App() {
                 <Route path="/" element={<Home />} />
                 <Route path="/login" element={<Login />} />
                 <Route path="/passwords/*" element={<PasswordsRoutes />} />
+                <Route path="/create" element={<Create />} />
                 <Route path="/detail/:id" element={<Detail />} />
                 <Route path="/invites/*" element={<InvitesRoutes />} />
                 {staticContext?.env?.VITE_FEATURE_REGISTRATION === 'true' && <Route path="/register" element={<Register />} />}

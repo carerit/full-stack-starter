@@ -19,7 +19,7 @@ function Item({ record }) {
 
                     <div className='col-lg'>
                         <div className='row-auto pr-5'>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ultricies semper lacus, non pharetra risus sollicitudin eget. Nulla eu justo sem. Morbi venenatis non libero nec tristique. Suspendisse porttitor tellus nec ante commodo, vitae ullamcorper lacus mattis. Nam quis quam purus. In purus ligula, efficitur at enim id
+                            {record.fields.Text}
                         </div>
                         <div className='row-auto pt-2'>
                             <Link to={url}>Details</Link>
