@@ -16,7 +16,9 @@ function Item({ record }) {
                         {record?.fields.Attachments && Object.keys(record.fields.Attachments).map((key) => (
                             <img
                                 key={key}
-                                src={record.fields.Attachments[key].thumbnails.large.url} width={175} height={120}
+                                src={record.fields.Attachments[key].thumbnails.large.url}
+                                width={175}
+                                height={120}
                                 alt={`Image ${key}`}
                             />
                         ))}

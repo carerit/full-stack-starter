@@ -1,7 +1,7 @@
 import { Helmet } from 'react-helmet-async';
 import { useStaticContext } from './StaticContext';
 import Item from './Item';
-import { useParams, useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 
 function Home() {
 
