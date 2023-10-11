@@ -1,5 +1,4 @@
 import { Link } from 'react-router-dom'
-import placeholder from './assets/placeholder.jpg'
 
 function Item({ record }) {
     const url = `/detail/${record.id}`
@@ -14,7 +13,13 @@ function Item({ record }) {
                 </div>
                 <div className='row'>
                     <div className="col-auto">
-                        <img id="placeholder" src={placeholder} width={150} height={100}></img>
+                        {record?.fields.Attachments && Object.keys(record.fields.Attachments).map((key) => (
+                            <img
+                                key={key}
+                                src={record.fields.Attachments[key].thumbnails.large.url} width={175} height={120}
+                                alt={`Image ${key}`}
+                            />
+                        ))}
                     </div>
 
                     <div className='col-lg'>

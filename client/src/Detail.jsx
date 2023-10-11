@@ -5,6 +5,9 @@ import { useParams } from 'react-router-dom'
 
 
 function Detail() {
+
+    const date = new Date();
+
     const { id } = useParams();
     const [data, setData] = useState();
     useEffect(() => {
@@ -20,6 +23,8 @@ function Detail() {
         , [id]);
 
     console.log(data);
+
+
     return (
 
         <main className="container">
@@ -30,25 +35,24 @@ function Detail() {
                         {data?.fields.Title}
                     </div>
                     <div className="card-body">
-                        <img src={placeholder}></img>
-                        <h5 className="card-title">Name</h5>
-                        <p className="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam rutrum maximus nunc
-                            at vestibulum. Ut ac sem eget elit tincidunt euismod at eu arcu. Praesent neque ipsum, sodales quis luctus
-                            in, elementum et felis. Aenean vehicula malesuada dignissim. Duis non lorem sodales, lobortis odio vitae,
-                            egestas ligula. Donec vel cursus sapien, elementum rutrum libero. Curabitur lectus arcu, efficitur in
-                            vestibulum vel, placerat in quam. Aenean at posuere nunc. Suspendisse eget congue leo. Nunc eu mi in
-                            massa viverra rutrum quis vel quam. Suspendisse a turpis vel dui convallis vulputate. In quis tortor diam.
-                            Nullam id risus sed ipsum condimentum suscipit at ut metus.
-                            <br></br>
-                            Maecenas rutrum mauris at velit ornare vehicula. Class aptent taciti sociosqu ad litora torquent per
-                            conubia nostra, per inceptos himenaeos. In elementum sit amet nisl quis vulputate. Mauris semper ultricies
-                            semper. Morbi euismod sem ac hendrerit ornare. Mauris ultricies, dolor id luctus eleifend, magna purus
-                            tristique justo, in faucibus mi sapien quis nibh. Proin euismod egestas sollicitudin.</p>
+                        {data?.fields.Attachments && Object.keys(data.fields.Attachments).map((key) => (
+                            <img
+                                key={key}
+                                src={data.fields.Attachments[key].url}
+                                alt={`Image ${key}`}
+                            />
+                        ))}
+                        <h5 className="card-title">{data?.fields.Name}</h5>
+                        <p className="card-text">
+
+                            {data?.fields.detailsText}
+
+                        </p>
                         <a href="/" className="btn btn-primary">Contact</a>
                     </div>
                     <div className="card-footer text-muted">
 
-                        {printDate(data?.fields.DatePosted)}
+                        {printDate((data?.fields.DatePosted), date)}
                     </div>
                 </div>
             </div>
@@ -57,11 +61,15 @@ function Detail() {
     );
 }
 
-function printDate(date) {
-    if (date > 1) {
-        return <>{date} Days ago</>;
+function printDate(datePosted, todayDate) {
+    const convertedDate = new Date(datePosted);
+    const diff = todayDate - convertedDate;
+    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+
+    if (days == 1) {
+        return <>{days} Day ago</>;
     } else {
-        return <>{date} Day ago</>;
+        return <>{days} Days ago</>;
     }
 }
 
