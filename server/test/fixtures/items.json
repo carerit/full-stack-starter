@@ -1,0 +1,34 @@
+[
+    {
+        "model": "Item",
+        "data": {
+            "id": 81273098,
+            "Title": "fixture title test 1",
+            "Text": "fixture text test 1"
+        }
+    },
+    {
+        "model": "Item",
+        "data": {
+            "id": 81273099,
+            "Title": "fixture title test 2",
+            "Text": "fixture text test 2"
+        }
+    },
+    {
+        "model": "Item",
+        "data": {
+            "id": 81273100,
+            "Title": "fixture title test 3",
+            "Text": "fixture text test 3"
+        }
+    },
+    {
+        "model": "Item",
+        "data": {
+            "id": 81273101,
+            "Title": "fixture title test 4",
+            "Text": "fixture text test 4"
+        }
+    }
+]
