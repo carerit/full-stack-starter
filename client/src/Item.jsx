@@ -2,6 +2,9 @@ import { Link } from 'react-router-dom'
 
 function Item({ record }) {
     const url = `/detail/${record.id}`
+    let vidLink = record?.fields.vidLink;
+    let vidId = vidLink?.split('v=')[1].split("&")[0];
+    let thumbnail = `http://img.youtube.com/vi/${vidId}/mqdefault.jpg`
 
     return (
         <>
@@ -13,7 +16,7 @@ function Item({ record }) {
                 </div>
                 <div className='row'>
                     <div className="col-auto">
-                        {record?.fields.Attachments && Object.keys(record.fields.Attachments).map((key) => (
+                        {/* {record?.fields.Attachments && Object.keys(record.fields.Attachments).map((key) => (
                             <img
                                 key={key}
                                 src={record.fields.Attachments[key].thumbnails.large.url}
@@ -21,7 +24,14 @@ function Item({ record }) {
                                 height={120}
                                 alt={`Image ${key}`}
                             />
-                        ))}
+                        ))} */}
+                        <img
+                            key={record.id}
+                            src={thumbnail}
+                            width={175}
+                            height={120}
+                            alt={`Image ${record.id}`}
+                        />
                     </div>
 
                     <div className='col-lg'>

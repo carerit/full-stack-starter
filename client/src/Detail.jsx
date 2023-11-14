@@ -1,4 +1,5 @@
 import placeholder from './assets/placeholder.jpg'
+import YouTube from "react-youtube";
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom'
 
@@ -22,8 +23,9 @@ function Detail() {
     }
         , [id]);
 
-    console.log(data);
-
+    let vidLink = data?.fields.vidLink;
+    let vidId = vidLink?.split('v=')[1].split("&")[0];
+    console.log(vidId);
 
     return (
 
@@ -35,13 +37,10 @@ function Detail() {
                         {data?.fields.Title}
                     </div>
                     <div className="card-body">
-                        {data?.fields.Attachments && Object.keys(data.fields.Attachments).map((key) => (
-                            <img
-                                key={key}
-                                src={data.fields.Attachments[key].url}
-                                alt={`Image ${key}`}
-                            />
-                        ))}
+                        <YouTube
+                            videoId={vidId}
+                        />
+
                         <h5 className="card-title">{data?.fields.Name}</h5>
                         <p className="card-text">
 
