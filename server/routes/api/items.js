@@ -13,4 +13,13 @@ router.get('/', async(req, res) => {
     res.json(records.map((r) => r.toJSON()));
 });
 
+router.get('/:id', async(req, res) => {
+    const records = await models.Item.findByPk(req.params.id);
+    if (records) {
+        res.json(records.toJSON());
+    } else {
+        res.status(StatusCodes.NOT_FOUND).end();
+    }
+});
+
 export default router;
