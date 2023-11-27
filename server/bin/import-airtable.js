@@ -11,10 +11,14 @@ fetch(url, {
   .then((response) => response.json())
   .then(async (data) => {
     //console.log(data);
+
+    
+
     for (const record of data.records) {
       await models.Item.create({
         Title: record.fields.Title,
         Text: record.fields.Text,
+        VideoLink: record.fields.vidLink,
       });
     }
   });

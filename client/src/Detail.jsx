@@ -11,21 +11,28 @@ function Detail() {
 
     const { id } = useParams();
     const [data, setData] = useState();
-    useEffect(() => {
-        const token = 'patpzeJGcJ0aHfK6J.e9011b3d993570931a90fb1f5597cd7c07304a39fd3cbbd97b5eb2c2c5c4cbe5';
-        const url = `https://api.airtable.com/v0/appvoUbpT81hh1l9f/Table%201/${id}`;
+    // Previous AirTable code:
+    // useEffect(() => {
+    //     const token = 'patpzeJGcJ0aHfK6J.e9011b3d993570931a90fb1f5597cd7c07304a39fd3cbbd97b5eb2c2c5c4cbe5';
+    //     const url = `https://api.airtable.com/v0/appvoUbpT81hh1l9f/Table%201/${id}`;
 
-        fetch(url, {
-            headers: { Authorization: `Bearer ${token}` }
-        })
+    //     fetch(url, {
+    //         headers: { Authorization: `Bearer ${token}` }
+    //     })
+    //         .then((response) => response.json())
+    //         .then((data) => setData(data));
+    // }
+    //     , [id]);
+
+    useEffect(() => {
+        fetch(`/api/items/${id}`)
             .then((response) => response.json())
             .then((data) => setData(data));
-    }
-        , [id]);
+    }, [id]);
 
-    let vidLink = data?.fields.vidLink;
-    let vidId = vidLink?.split('v=')[1].split("&")[0];
-    console.log(vidId);
+    let videoLink = data?.VideoLink;
+    let videoId = videoLink?.split('v=')[1].split("&")[0];
+    console.log(videoId);
 
     return (
 
@@ -34,24 +41,25 @@ function Detail() {
             <div className='py-4'>
                 <div className="card text-center">
                     <div className="card-header">
-                        {data?.fields.Title}
+                        {data?.Title}
                     </div>
                     <div className="card-body">
+
                         <YouTube
-                            videoId={vidId}
+                            videoId={videoId}
                         />
 
-                        <h5 className="card-title">{data?.fields.Name}</h5>
+                        <h5 className="card-title">{data?.Name}</h5>
                         <p className="card-text">
 
-                            {data?.fields.detailsText}
+                            {data?.Text}
 
                         </p>
                         <a href="/" className="btn btn-primary">Contact</a>
                     </div>
                     <div className="card-footer text-muted">
 
-                        {printDate((data?.fields.DatePosted), date)}
+                        {printDate((data?.createdAt), date)}
                     </div>
                 </div>
             </div>

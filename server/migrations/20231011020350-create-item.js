@@ -18,12 +18,11 @@ module.exports = {
       Name: {
         type: Sequelize.TEXT,
       },
-      DatePosted: {
-        type: Sequelize.DATE,
-      },
-      Attachments: {
+  
+      VideoLink: {
         type: Sequelize.STRING,
       },
+
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE,

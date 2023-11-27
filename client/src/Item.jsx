@@ -2,16 +2,16 @@ import { Link } from 'react-router-dom'
 
 function Item({ record }) {
     const url = `/detail/${record.id}`
-    let vidLink = record?.fields.vidLink;
-    let vidId = vidLink?.split('v=')[1].split("&")[0];
-    let thumbnail = `http://img.youtube.com/vi/${vidId}/mqdefault.jpg`
+    let videoLink = record?.VideoLink;
+    let videoId = videoLink?.split('v=')[1].split("&")[0];
+    let thumbnail = `http://img.youtube.com/vi/${videoId}/mqdefault.jpg`
 
     return (
         <>
             <div className="card mb-5 mt-5">
                 <div className='row-auto p-2' >
                     <span style={{ fontSize: '28px' }}>
-                        {record.fields.Title}
+                        {record.Title}
                     </span>
                 </div>
                 <div className='row'>
@@ -36,7 +36,7 @@ function Item({ record }) {
 
                     <div className='col-lg'>
                         <div className='row-auto pr-5'>
-                            {record.fields.Text}
+                            {record.Text}
                         </div>
                         <div className='row-auto pt-2'>
                             <Link to={url}>Details</Link>

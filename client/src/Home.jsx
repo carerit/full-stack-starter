@@ -8,19 +8,23 @@ function Home() {
   const staticContext = useStaticContext();
 
   const [data, setData] = useState();
-  useEffect(() => {
-    const token = 'patpzeJGcJ0aHfK6J.e9011b3d993570931a90fb1f5597cd7c07304a39fd3cbbd97b5eb2c2c5c4cbe5';
-    const url = 'https://api.airtable.com/v0/appvoUbpT81hh1l9f/Table%201?view=Grid%20view';
+  // useEffect(() => {
+  //   const token = 'patpzeJGcJ0aHfK6J.e9011b3d993570931a90fb1f5597cd7c07304a39fd3cbbd97b5eb2c2c5c4cbe5';
+  //   const url = 'https://api.airtable.com/v0/appvoUbpT81hh1l9f/Table%201?view=Grid%20view';
 
-    fetch(url, {
-      headers: { Authorization: `Bearer ${token}` }
-    })
+  //   fetch(url, {
+  //     headers: { Authorization: `Bearer ${token}` }
+  //   })
+  //     .then((response) => response.json())
+  //     .then((data) => setData(data));
+  // }
+  //   , []);
+
+  useEffect(() => {
+    fetch('/api/items')
       .then((response) => response.json())
       .then((data) => setData(data));
-  }
-    , []);
-
-    console.log(data);
+  }, []);
 
   return (
     <>
@@ -29,7 +33,15 @@ function Home() {
       </Helmet>
       <main className="container">
         <h1 >Home</h1>
-        {data?.records.map((record) => <Item key={record.id} record={record} />)}
+        <div className='row'>
+          {data?.map((record) => (
+            <div className='col-lg-4' key={record.id}>
+              <Item key={record.id} record={record} />
+            </div>
+          ))}
+
+        </div>
+
       </main>
     </>
   );

@@ -13,11 +13,10 @@ export default function (sequelize, DataTypes) {
   }
   Item.init(
     {
-      Title: DataTypes.STRING,
+      Title: DataTypes.STRING,  
       Text: DataTypes.TEXT,
       Name: DataTypes.TEXT,
-      DatePosted: DataTypes.DATE,
-      Attachments: DataTypes.STRING,
+      VideoLink: DataTypes.STRING,
     },
     {
       sequelize,
