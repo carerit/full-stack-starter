@@ -50,7 +50,7 @@ function Detail() {
                         />
 
                         <h5 className="card-title">{data?.Name}</h5>
-                        <p className="card-text">
+                        <p className="card-text" >
 
                             {data?.Text}
 

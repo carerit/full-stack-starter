@@ -1,6 +1,8 @@
 import { Link } from 'react-router-dom'
+import { useAuthContext } from './AuthContext'
 
 function Item({ record }) {
+    const { user } = useAuthContext();
     const url = `/detail/${record.id}`
     let videoLink = record?.VideoLink;
     let videoId = videoLink?.split('v=')[1].split("&")[0];
@@ -16,15 +18,6 @@ function Item({ record }) {
                 </div>
                 <div className='row'>
                     <div className="col-auto">
-                        {/* {record?.fields.Attachments && Object.keys(record.fields.Attachments).map((key) => (
-                            <img
-                                key={key}
-                                src={record.fields.Attachments[key].thumbnails.large.url}
-                                width={175}
-                                height={120}
-                                alt={`Image ${key}`}
-                            />
-                        ))} */}
                         <img
                             key={record.id}
                             src={thumbnail}
@@ -40,7 +33,9 @@ function Item({ record }) {
                         </div>
                         <div className='row-auto pt-2'>
                             <Link to={url}>Details</Link>
+                            {user && <Link to={`/items/${record.id}/edit`}>Edit</Link>}
                         </div>
+
                     </div>
                 </div>
 
