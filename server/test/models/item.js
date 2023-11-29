@@ -16,11 +16,15 @@ describe('models.Item', () => {
     const record = await models.Item.create({
       Title: 'This is a test title',
       Text: 'This is longer descriptive text',
+      VideoLink: 'https://www.youtube.com/watch?v=QnDWIZuWYW0',
+      Name: 'Create table',
     });
 
     assert.deepStrictEqual(await models.Item.count(), 5);
     assert.deepStrictEqual(record.Title, 'This is a test title');
     assert.deepStrictEqual(record.Text, 'This is longer descriptive text');
+    assert.deepStrictEqual(record.VideoLink, 'https://www.youtube.com/watch?v=QnDWIZuWYW0');
+    assert.deepStrictEqual(record.Name, 'Create table');
   });
 
   it('finds an Item record by ID', async () => {
