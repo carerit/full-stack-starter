@@ -8,7 +8,7 @@ function ItemForm() {
     const [data, setData] = useState({
         Title: '',
         Text: '',
-        VideoLink: ''
+        VideoLink: '',
     });
 
     useEffect(() => {
@@ -49,26 +49,24 @@ function ItemForm() {
         }
     }
 
-    return (
-        <div className="container">
+    return <div className="container">
             <h1> Item Form </h1>
             <form onSubmit={onSubmit}>
                 <div className="mb-3">
-                    <label htmlFor="text" className="form-label">Title</label>
+                    <label htmlFor="Title" >Title</label>
                     <input type="text" id="Title" name="Title" className="form-control" onChange={onChange} value={data.Title} />
                 </div>
                 <div className="mb-3">
-                    <label htmlFor="text" className="form-label">Text</label>
+                    <label htmlFor="Text" >Text</label>
                     <input type="text" id="Text" name="Text" className="form-control" onChange={onChange} value={data.Text} />
                 </div>
                 <div className="mb-3">
-                    <label htmlFor="text" className="form-label">Video Link</label>
+                    <label htmlFor="Link" >Video Link</label>
                     <input type="text" id="VideoLink" name="VideoLink" className="form-control" onChange={onChange} value={data.VideoLink} />
                 </div>
                 <button type="submit" className="btn btn-primary">Submit</button>
             </form>
 
-        </div>
-    );
+        </div>;
 }
 export default ItemForm;
