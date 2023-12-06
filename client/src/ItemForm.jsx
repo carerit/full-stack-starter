@@ -42,19 +42,6 @@ function ItemForm() {
         setConfirmDeleteShowing(false);
     }
 
-    async function onDelete() {
-        try {
-            const response = await fetch(`/api/items/${id}`, {
-                method: 'DELETE'
-            });
-            const json = await response.json();
-            console.log(json);
-            navigate('/');
-        } catch (err) {
-            console.log(err);
-        }
-    }
-
     async function onSubmit(event) {
         event.preventDefault();
         try {
@@ -79,7 +66,24 @@ function ItemForm() {
         }
     }
 
+<<<<<<< HEAD
     return <div className="container">
+=======
+
+    async function onDelete() {
+        try {
+            const response = await fetch(`/api/items/${id}`, {
+                method: 'DELETE'
+            });
+            navigate('/');
+        } catch (err) {
+            console.log(err);
+        }
+    }
+
+    return (
+        <div className="container">
+>>>>>>> e27e87d (improved home and nav bar functionality)
             <h1> Item Form </h1>
             <form onSubmit={onSubmit}>
                 <div className="mb-3">
@@ -100,9 +104,9 @@ function ItemForm() {
                 </div>
                 <Modal centered show={isConfirmDeleteShowing} onHide={handleClose}>
                     <Modal.Header closeButton>
-                        <Modal.Title>Modal heading</Modal.Title>
+                        <Modal.Title>Confirm Delete</Modal.Title>
                     </Modal.Header>
-                    <Modal.Body>Woohoo, you are reading this text in a modal!</Modal.Body>
+                    <Modal.Body>Are you sure you want to delete?</Modal.Body>
                     <Modal.Footer>
                         <Button variant="secondary" onClick={handleClose}>
                             Cancel

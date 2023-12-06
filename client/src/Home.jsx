@@ -10,7 +10,10 @@ function Home() {
 
   const { user } = useAuthContext();
   const [data, setData] = useState();
+<<<<<<< HEAD
 
+=======
+>>>>>>> e27e87d (improved home and nav bar functionality)
   useEffect(() => {
     fetch('/api/items')
       .then((response) => response.json())
@@ -27,9 +30,6 @@ function Home() {
       </Helmet>
       <main className="container">
         <h1 >Home</h1>
-        {user && <div className="mb-3">
-          <Link to="/items/new" className="btn btn-primary">Add Item</Link>
-        </div>}
         <div className='row'>
           {data?.map((record) => (
             <div className='col-lg-4' key={record.id}>

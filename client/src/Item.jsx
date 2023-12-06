@@ -53,13 +53,18 @@ function Item({ record }) {
                 <Card.Text>
                     {record.Text}
                 </Card.Text>
-                <div className="btn-group">
-                    <Button variant="info">
-                        <Link to={url} className="text-decoration-none">Details</Link>
-                    </Button>
-                    <Button variant="warning">
-                        {user && <Link to={`/items/${record.id}/edit`} className="text-decoration-none">Edit</Link>}
-                    </Button>
+                <div>
+                    <Link to={url} className="text-decoration-none me-1">
+                        <Button variant="info">
+                            Details
+                        </Button>
+                    </Link>
+                    {user && <Link to={`/items/${record.id}/edit`} className="text-decoration-none">
+                        <Button variant="warning">
+                            Edit
+                        </Button>
+                    </Link>}
+
                 </div>
             </Card.Body>
         </Card>

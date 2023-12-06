@@ -42,9 +42,9 @@ function Header() {
 
   return (
     <nav className="header navbar navbar-expand-md navbar-light bg-light fixed-top">
-      <div className="container">
+      <div className="container ">
         <Link className="navbar-brand" to="/" onClick={hideNavbar}>
-          Full Stack Starter
+          ClipCity
         </Link>
         <button onClick={toggleNavbar} className="navbar-toggler" type="button" aria-label="Toggle navigation">
           <span className="navbar-toggler-icon"></span>
@@ -56,11 +56,13 @@ function Header() {
                 Home
               </Link>
             </li>
-            <li className="nav-item active">
-              <Link className="nav-link" aria-current="page" to="/create" onClick={hideNavbar}>
-                Create
-              </Link>
-            </li>
+            {user &&
+              <li className="nav-item active">
+                <Link className="nav-link" aria-current="page" to="/items/new" onClick={hideNavbar}>
+                  Create
+                </Link>
+              </li>}
+
             <div className="flex-grow-1 d-flex justify-content-end">
               {user && (
                 <>
