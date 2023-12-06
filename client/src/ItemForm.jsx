@@ -1,7 +1,12 @@
 import { useState, useEffect } from "react";
 import { useNavigate, useParams } from 'react-router-dom';
+import Button from 'react-bootstrap/Button';
+import Modal from 'react-bootstrap/Modal';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 
 function ItemForm() {
+
 
     const navigate = useNavigate();
     const { id } = useParams();
@@ -10,6 +15,9 @@ function ItemForm() {
         Text: '',
         VideoLink: ''
     });
+
+    const [isConfirmDeleteShowing, setConfirmDeleteShowing] = useState(false);
+
 
     useEffect(() => {
         if (id) {
@@ -23,6 +31,28 @@ function ItemForm() {
         const newData = { ...data };
         newData[event.target.id] = event.target.value;;
         setData(newData);
+    }
+
+    function showConfirmDeleteModal() {
+        setConfirmDeleteShowing(true);
+
+    }
+
+    function handleClose() {
+        setConfirmDeleteShowing(false);
+    }
+
+    async function onDelete() {
+        try {
+            const response = await fetch(`/api/items/${id}`, {
+                method: 'DELETE'
+            });
+            const json = await response.json();
+            console.log(json);
+            navigate('/');
+        } catch (err) {
+            console.log(err);
+        }
     }
 
     async function onSubmit(event) {
@@ -65,7 +95,24 @@ function ItemForm() {
                     <label htmlFor="text" className="form-label">Video Link</label>
                     <input type="text" id="VideoLink" name="VideoLink" className="form-control" onChange={onChange} value={data.VideoLink} />
                 </div>
-                <button type="submit" className="btn btn-primary">Submit</button>
+                <div>
+                    <button type="submit" className="me-2 btn btn-primary">Submit</button>
+                    {id && <button onClick={showConfirmDeleteModal} type="button" className="btn btn-danger">Delete</button>}
+                </div>
+                <Modal centered show={isConfirmDeleteShowing} onHide={handleClose}>
+                    <Modal.Header closeButton>
+                        <Modal.Title>Modal heading</Modal.Title>
+                    </Modal.Header>
+                    <Modal.Body>Woohoo, you are reading this text in a modal!</Modal.Body>
+                    <Modal.Footer>
+                        <Button variant="secondary" onClick={handleClose}>
+                            Cancel
+                        </Button>
+                        <Button variant="danger" onClick={onDelete}>
+                            Delete
+                        </Button>
+                    </Modal.Footer>
+                </Modal>
             </form>
 
         </div>
