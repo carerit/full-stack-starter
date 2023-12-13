@@ -66,9 +66,6 @@ function ItemForm() {
         }
     }
 
-<<<<<<< HEAD
-    return <div className="container">
-=======
 
     async function onDelete() {
         try {
@@ -83,7 +80,6 @@ function ItemForm() {
 
     return (
         <div className="container">
->>>>>>> e27e87d (improved home and nav bar functionality)
             <h1> Item Form </h1>
             <form onSubmit={onSubmit}>
                 <div className="mb-3">
@@ -118,6 +114,6 @@ function ItemForm() {
                 </Modal>
             </form>
 
-        </div>;
+        </div>);
 }
 export default ItemForm;

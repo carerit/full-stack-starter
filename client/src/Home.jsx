@@ -10,10 +10,6 @@ function Home() {
 
   const { user } = useAuthContext();
   const [data, setData] = useState();
-<<<<<<< HEAD
-
-=======
->>>>>>> e27e87d (improved home and nav bar functionality)
   useEffect(() => {
     fetch('/api/items')
       .then((response) => response.json())

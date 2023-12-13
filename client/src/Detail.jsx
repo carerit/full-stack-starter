@@ -1,7 +1,6 @@
-import placeholder from './assets/placeholder.jpg'
-import YouTube from "react-youtube";
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom'
+import YouTube from "react-youtube";
 
 
 
@@ -43,7 +42,7 @@ function Detail() {
                             {data?.Text}
 
                         </p>
-                        <a href="/" className="btn btn-primary">Contact</a>
+    
                     </div>
                     <div className="card-footer text-muted">
 
