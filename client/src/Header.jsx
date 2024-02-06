@@ -81,6 +81,11 @@ function Header() {
                     Create
                   </Link>
                 </li>}
+              <li className="nav-item active">
+                <Link className="nav-link" aria-current="page" to="/about" onClick={hideNavbar}>
+                  About
+                </Link>
+              </li>
 
               <div className="flex-grow-1 d-flex justify-content-end">
                 {user && (

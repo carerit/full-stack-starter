@@ -16,6 +16,7 @@ import Register from './Register';
 import UsersRoutes from './Users/UsersRoutes';
 import Create from './Create'
 import ItemForm from './ItemForm';
+import AboutPage from './About';
 
 function App() {
   const staticContext = useStaticContext();
@@ -34,7 +35,7 @@ function App() {
                 <Route path="/items/:id/edit" element={<ItemForm />} />
                 <Route path="/login" element={<Login />} />
                 <Route path="/passwords/*" element={<PasswordsRoutes />} />
-                {/* <Route path="/create" element={<Create />} /> */}
+                <Route path="/about" element={<AboutPage />} />
                 <Route path="/detail/:id" element={<Detail />} />
                 <Route path="/invites/*" element={<InvitesRoutes />} />
                 {staticContext?.env?.VITE_FEATURE_REGISTRATION === 'true' && <Route path="/register" element={<Register />} />}
